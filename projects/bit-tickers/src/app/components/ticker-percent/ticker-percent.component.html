@@ -1,0 +1,6 @@
+<div class="ticker-percent">
+    <span class="percent-value"
+          [class.text-success]="percent > 0"
+          [class.text-danger]="percent < 0">{{percent}}%</span>
+    <span class="percent-range">{{range}}</span>
+</div>

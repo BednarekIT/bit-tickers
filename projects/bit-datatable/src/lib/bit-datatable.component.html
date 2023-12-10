@@ -1,0 +1,70 @@
+<div class="bit-datatable">
+    <div>
+        <ng-content select="[header]"></ng-content>
+    </div>
+
+    <div class="table-responsive-wrapper">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th *ngFor="let column of columns; trackBy: trackByFn"
+                        [style.width]="column.width ? column.width : 'auto'"
+                        [class.text-end]="column?.align === 'right'"
+                        [class.sticky-top]="column?.sticky"
+                        [class.sticky-header-right]="column?.sticky"
+                        [class.text-center]="column?.align === 'center'">
+
+                        <ng-template
+                                *ngIf="column.headerTemplate"
+                                [ngTemplateOutlet]="column.headerTemplate"
+                                [ngTemplateOutletContext]="{ item: column}"
+                        >
+                        </ng-template>
+                        <lib-bit-datatable-header-cell *ngIf="!column.headerTemplate" [column]="column">
+                            <div [style.width]="column.width ? column.width : 'auto'"
+                                 [innerHTML]="(column.name || column.name === '' ? column.name : ('global.model.'+(column.prop)))"></div>
+                        </lib-bit-datatable-header-cell>
+                    </th>
+                </tr>
+                </thead>
+                <ng-container *ngIf="pagination?.totalElements > 0 else noResults">
+
+                    <ng-container>
+                        <tbody>
+                        <ng-container *ngFor="let item of rows;trackBy: trackByFn let i = index">
+                            <tr [class.bold-row]="item['style'] && item['style'] === 'bold'">
+                                <td *ngFor="let column of columns; trackBy: trackByFn"
+                                    [class.sticky-right]="column.sticky"
+                                    [style.width]="column.width ? column.width : 'auto'">
+                                    <ng-template
+                                            *ngIf="column.cellTemplate && column.cellTemplate?.elementRef"
+                                            [ngTemplateOutlet]="column['cellTemplate']"
+                                            [ngTemplateOutletContext]="{ item: item, column: column.prop, index: i}"
+                                    >
+                                    </ng-template>
+                                    <ng-container *ngIf="!column.cellTemplate">
+                                        {{item[column.prop]}}
+                                    </ng-container>
+                                </td>
+                            </tr>
+                        </ng-container>
+                        </tbody>
+                    </ng-container>
+                </ng-container>
+                <ng-template #noResults>
+                    <tbody>
+                    <tr>
+                        <td colspan="100%">
+                            {{ loading ? 'Loading...' : ('global.empty_list')}}
+                        </td>
+                    </tr>
+                    </tbody>
+                </ng-template>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+

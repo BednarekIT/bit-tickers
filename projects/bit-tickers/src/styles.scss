@@ -1,0 +1,62 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+:root {
+  --bs-body-font-family: 'Roboto';
+  --bs-body-font-size: 14px;
+  --bs-primary: #5241AB;
+  --bs-primary-rgb: 82, 65, 171;
+  --bs-secondary: #606060;
+  --bs-table-hover-bg: #5241AB;
+  --bs-nav-link-font-size: 16px;
+  --bs-navbar-nav-link-padding-x: 12px;
+  --bs-nav-link-color: #606060;
+
+}
+
+.navbar-nav {
+  --bs-nav-link-color: #606060;
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--bs-primary);
+  --bs-btn-border-color: var(--bs-primary);
+  --bs-btn-border-radius: 10px;
+  --bs-btn-padding-y: 2px;
+  --bs-btn-padding-x: 25px;
+
+  &:hover {
+    --bs-btn-hover-bg: var(--bs-primary);
+    --bs-btn-hover-border-bg: var(--bs-primary);
+    --bs-btn-hover-border-color: var(--bs-primary);
+  }
+}
+
+.btn-primary {
+  --bs-btn-border-radius: 10px;
+  --bs-btn-padding-y: 2px;
+  --bs-btn-padding-x: 25px;
+  --bs-btn-bg: var(--bs-primary);
+  --bs-btn-border-color: var(--bs-primary);
+}
+
+.table {
+  --bs-table-border-color: #DCDCDC;
+
+  th {
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  td {
+    vertical-align: middle;
+  }
+}
+
+.table-hover > tbody > tr:hover > * {
+  --bs-table-hover-bg: #60606018;
+}
+
+html {
+  overflow-y: scroll;
+}

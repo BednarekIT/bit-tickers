@@ -1,0 +1,61 @@
+.favorite {
+  cursor: pointer;
+  transition: all 2000ms ease-in-out;
+
+  &:hover {
+    path {
+      stroke: var(--bs-primary);
+      fill: var(--bs-primary);
+    }
+  }
+
+  &--on {
+    path {
+      stroke: var(--bs-primary);
+      fill: var(--bs-primary);
+    }
+
+    &:hover {
+      path {
+        fill: transparent;
+      }
+    }
+  }
+}
+
+.pointer-event {
+  cursor: pointer;
+}
+
+.ticker-header {
+  padding: 20px 0;
+
+  h1 {
+    font-size: 36px;
+    font-weight: 900;
+    line-height: 42px;
+    text-align: center;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 16px;
+    color: #606060;
+  }
+}
+
+
+.arrow-up {
+  position: relative;
+  padding-left: 14px;
+
+  &:before {
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 6px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 6px solid var(--bs-success);
+  }
+}

@@ -1,0 +1,16 @@
+.navbar {
+  border-bottom: 1px solid #DCDCDC;
+
+  .nav-actions {
+    display: flex;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+
+      .btn-primary {
+        margin-top: 10px;
+        margin-left: 0 !important;
+      }
+    }
+  }
+}

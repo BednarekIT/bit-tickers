@@ -1,0 +1,11 @@
+:host {
+  height: 16px;
+  width: 16px;
+  display: inline-flex;
+  -webkit-mask-size: contain;
+  -webkit-mask-position: center;
+  border-radius: 100%;
+  -webkit-mask-repeat: no-repeat;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
