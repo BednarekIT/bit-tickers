@@ -3,6 +3,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5.
 
-#### Unit tests: `ng test bit-tickers`
-#### Build datatable lib: `ng build bit-datatable`
-#### Run demo app: `ng serve`
+Standalone, Ngrx, Signals, Library, Pipes, Guard, Lazy Loading Routes
+
+Unit tests: `ng test bit-tickers`
+
+Build datatable lib: `ng build bit-datatable`
+
+Run demo app: `ng serve`
