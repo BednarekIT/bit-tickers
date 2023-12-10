@@ -26,4 +26,8 @@ import {TickerDTO} from "../../data/data";
 export class NgrxTickerDetailsComponent {
   tickersFacade = inject(TickersFacade);
   details$ = this.tickersFacade.details$;
+
+  toggleFav(ticker: TickerDTO) {
+    this.tickersFacade.toggleFavorite(ticker)
+  }
 }

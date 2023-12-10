@@ -60,3 +60,29 @@
 html {
   overflow-y: scroll;
 }
+
+
+.favorite {
+  cursor: pointer;
+  transition: all 2000ms ease-in-out;
+
+  &:hover {
+    path {
+      stroke: var(--bs-primary);
+      fill: var(--bs-primary);
+    }
+  }
+
+  &--on {
+    path {
+      stroke: var(--bs-primary);
+      fill: var(--bs-primary);
+    }
+
+    &:hover {
+      path {
+        fill: transparent;
+      }
+    }
+  }
+}

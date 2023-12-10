@@ -6,12 +6,19 @@
                     <app-svg-icon class="me-2"
                                   [path]="'/assets/icons/'+details.symbol.toLowerCase()+'.svg'"></app-svg-icon>
                     {{details.name}} <span class="d-flex ms-2 h5 text-muted">{{details.symbol}}</span>
+
+                  <svg class="favorite ms-2" [class.favorite--on]="details.fav" (click)="toggleFav(details)" width="26" height="25" viewBox="0 0 16 15" fill="none"
+                       xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.23267 11.5574L8 11.4351L7.76733 11.5574L3.96178 13.5581L4.68858 9.32059L4.73301 9.06151L4.54478 8.87802L1.46603 5.87698L5.72076 5.25874L5.98089 5.22094L6.09723 4.98522L8 1.12978L9.90277 4.98522L10.0191 5.22094L10.2792 5.25874L14.534 5.87698L11.4552 8.87803L11.267 9.06151L11.3114 9.32059L12.0382 13.5581L8.23267 11.5574Z"
+                          stroke="#606060"/>
+                  </svg>
                 </div>
                 <div class="d-flex align-content-center align-items-center">
                     <span class="text-primary">{{details.quotes.USD.price | numberFormat: '$'}}</span>
                     <div class="text-muted ms-2">
                         <app-ticker-percent [percent]="details.quotes.USD.percent_change_15m"
                                             [range]="'15m'"></app-ticker-percent>
+
                     </div>
                 </div>
             </h3>
