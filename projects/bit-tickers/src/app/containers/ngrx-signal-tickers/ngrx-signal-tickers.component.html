@@ -1,0 +1,88 @@
+<ng-template #priceTmpl let-item="item" let-column="column">
+  <div class="d-flex w-100 justify-content-end">
+    {{item.quotes?.USD?.price | numberFormat: '$'}}
+  </div>
+</ng-template>
+
+<ng-template #numberTmpl let-item="item" let-column="column">
+  <div class="d-flex w-100 justify-content-end">
+    {{item[column] | numberFormat}}
+  </div>
+</ng-template>
+
+<ng-template #marketCupTmpl let-item="item" let-column="column">
+  <div class="d-flex w-100 justify-content-end">
+    {{item.quotes.USD.market_cap | numberFormat}}
+  </div>
+</ng-template>
+
+<ng-template #volumeTmpl let-item="item" let-column="column">
+  <div class="d-flex w-100 justify-content-end">
+    {{item.quotes.USD.volume_24h | numberFormat}}
+  </div>
+</ng-template>
+
+<ng-template #percent1hTmpl let-item="item" let-column="column">
+  <div class="d-flex w-100 justify-content-end"
+       [class.text-danger]="item.quotes.USD.percent_change_1h < 0"
+       [class.text-success]="item.quotes.USD.percent_change_1h > 0">
+    {{item.quotes.USD.percent_change_1h}}%
+  </div>
+</ng-template>
+
+<ng-template #percent24hTmpl let-item="item" let-column="column">
+  <div class="d-flex w-100 justify-content-end"
+       [class.text-danger]="item.quotes.USD.percent_change_24h < 0"
+       [class.text-success]="item.quotes.USD.percent_change_24h > 0">
+    {{item.quotes.USD.percent_change_24h}}%
+  </div>
+</ng-template>
+
+<ng-template #percent7dTmpl let-item="item" let-column="column">
+  <div class="d-flex w-100 justify-content-end"
+       [class.text-danger]="item.quotes.USD.percent_change_7d < 0"
+       [class.text-success]="item.quotes.USD.percent_change_7d > 0">
+    {{item.quotes.USD.percent_change_7d}}%
+  </div>
+</ng-template>
+
+<ng-template #actions let-item="item" let-column="column">
+
+</ng-template>
+
+<ng-template #name let-item="item" let-column="column">
+  <div class="d-flex align-content-center align-items-center pointer-event" [routerLink]="['/ngrx-signal', item.id]">
+    <app-svg-icon class="me-2" [path]="'/assets/icons/'+item.symbol.toLowerCase()+'.svg'"></app-svg-icon>
+    <span class="fw-bold text-nowrap">{{item[column]}}</span> <span
+    class="ms-2 text-secondary">{{item.symbol}}</span>
+  </div>
+</ng-template>
+
+<ng-template #favoriteTmpl let-item="item" let-column="column">
+  <div class="d-flex w-100 align-content-center justify-content-center align-items-center">
+    <svg class="favorite" [class.favorite--on]="item.fav" width="16" height="15" viewBox="0 0 16 15" fill="none"
+         xmlns="http://www.w3.org/2000/svg">
+      <path d="M8.23267 11.5574L8 11.4351L7.76733 11.5574L3.96178 13.5581L4.68858 9.32059L4.73301 9.06151L4.54478 8.87802L1.46603 5.87698L5.72076 5.25874L5.98089 5.22094L6.09723 4.98522L8 1.12978L9.90277 4.98522L10.0191 5.22094L10.2792 5.25874L14.534 5.87698L11.4552 8.87803L11.267 9.06151L11.3114 9.32059L12.0382 13.5581L8.23267 11.5574Z"
+            stroke="#606060"/>
+    </svg>
+  </div>
+</ng-template>
+<div class="row mt-2">
+  <div class="col-12">
+    <lib-bit-datatable [columns]="columns"
+                       [rows]="items()"
+                       [pagination]="pagination()"
+                       [loading]="loading()"
+    >
+      <ng-container header>
+        <div class="ticker-header text-center">
+          <h2>Today's Cryptocurrency Prices</h2>
+          <p>The global crypto market cap is <span class="fw-bold">$1.42T</span>, a
+            <span class="text-success fw-bold arrow-up">2.04%</span>
+            increase over the last day.
+            <a href="#" class="text-primary">Read More</a></p>
+        </div>
+      </ng-container>
+    </lib-bit-datatable>
+  </div>
+</div>

@@ -1,0 +1,192 @@
+<div class="card mt-4 mb-3">
+  <div class="card-body">
+    <h3 class="card-title w-100 d-flex align-items-center justify-content-between mt-2">
+      <div class="d-flex">
+        <app-svg-icon class="me-2"
+                      [path]="'/assets/icons/'+details.symbol.toLowerCase()+'.svg'"></app-svg-icon>
+        {{details.name}} <span class="d-flex ms-2 h5 text-muted">{{details.symbol}}</span>
+
+<!--        <svg class="favorite ms-2" [class.favorite&#45;&#45;on]="details.fav" (click)="toggleFav(details)" width="26" height="25" viewBox="0 0 16 15" fill="none"-->
+<!--             xmlns="http://www.w3.org/2000/svg">-->
+<!--          <path d="M8.23267 11.5574L8 11.4351L7.76733 11.5574L3.96178 13.5581L4.68858 9.32059L4.73301 9.06151L4.54478 8.87802L1.46603 5.87698L5.72076 5.25874L5.98089 5.22094L6.09723 4.98522L8 1.12978L9.90277 4.98522L10.0191 5.22094L10.2792 5.25874L14.534 5.87698L11.4552 8.87803L11.267 9.06151L11.3114 9.32059L12.0382 13.5581L8.23267 11.5574Z"-->
+<!--                stroke="#606060"/>-->
+<!--        </svg>-->
+      </div>
+      <div class="d-flex align-content-center align-items-center">
+        <span class="text-primary">{{details.quotes.USD.price | numberFormat: '$'}}</span>
+        <div class="text-muted ms-2">
+          <app-ticker-percent [percent]="details.quotes.USD.percent_change_15m"
+                              [range]="'15m'"></app-ticker-percent>
+
+        </div>
+      </div>
+    </h3>
+
+    <hr class="my-4">
+
+    <div class="row">
+      <div class="col-6">
+        <div class="price__details">
+          <h4 class="mb-3 d-flex justify-content-between">
+            <span>{{details.symbol}} Price History USD</span> <span
+            class="text-muted fs-6">Last updated: {{details.last_updated | date: 'yyyy-MM-dd HH:mm:ss'}}</span>
+          </h4>
+          <table class="table table-hover">
+            <thead class="table-primary">
+            <tr>
+              <th>Date Comparison</th>
+              <th class="text-end">% Change</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>15m</td>
+              <td class="text-end"
+                  [class.text-success]="details.quotes.USD.percent_change_15m > 0"
+                  [class.text-danger]="details.quotes.USD.percent_change_15m < 0">
+                {{details.quotes.USD.percent_change_15m}}%
+              </td>
+            </tr>
+            <tr>
+              <td>30m</td>
+              <td class="text-end"
+                  [class.text-success]="details.quotes.USD.percent_change_30m > 0"
+                  [class.text-danger]="details.quotes.USD.percent_change_30m < 0">
+                {{details.quotes.USD.percent_change_30m}}%
+              </td>
+            </tr>
+            <tr>
+              <td>1h</td>
+              <td class="text-end"
+                  [class.text-success]="details.quotes.USD.percent_change_1h > 0"
+                  [class.text-danger]="details.quotes.USD.percent_change_1h < 0">
+                {{details.quotes.USD.percent_change_1h}}%
+              </td>
+            </tr>
+            <tr>
+              <td>6h</td>
+              <td class="text-end"
+                  [class.text-success]="details.quotes.USD.percent_change_6h > 0"
+                  [class.text-danger]="details.quotes.USD.percent_change_6h < 0">
+                {{details.quotes.USD.percent_change_6h}}%
+              </td>
+            </tr>
+            <tr>
+              <td>12h</td>
+              <td class="text-end"
+                  [class.text-success]="details.quotes.USD.percent_change_12h > 0"
+                  [class.text-danger]="details.quotes.USD.percent_change_12h < 0">
+                {{details.quotes.USD.percent_change_12h}}%
+              </td>
+            </tr>
+            <tr>
+              <td>24h</td>
+              <td class="text-end"
+                  [class.text-success]="details.quotes.USD.percent_change_24h > 0"
+                  [class.text-danger]="details.quotes.USD.percent_change_24h < 0">
+                {{details.quotes.USD.percent_change_24h}}%
+              </td>
+            </tr>
+            <tr>
+              <td>7d</td>
+              <td class="text-end"
+                  [class.text-success]="details.quotes.USD.percent_change_7d > 0"
+                  [class.text-danger]="details.quotes.USD.percent_change_7d < 0">
+                {{details.quotes.USD.percent_change_7d}}%
+              </td>
+            </tr>
+            <tr>
+              <td>30d</td>
+              <td class="text-end"
+                  [class.text-success]="details.quotes.USD.percent_change_30d > 0"
+                  [class.text-danger]="details.quotes.USD.percent_change_30d < 0">
+                {{details.quotes.USD.percent_change_30d}}%
+              </td>
+            </tr>
+            <tr>
+              <td>1y</td>
+              <td class="text-end"
+                  [class.text-success]="details.quotes.USD.percent_change_1y > 0"
+                  [class.text-danger]="details.quotes.USD.percent_change_1y < 0">
+                {{details.quotes.USD.percent_change_1y}}%
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="price__details">
+          <h4 class="mb-3 d-flex justify-content-between">
+            <span>{{details.symbol}} Market Information</span>
+          </h4>
+          <table class="table table-hover">
+            <thead class="table-primary">
+            <tr>
+              <th>Name</th>
+              <th class="text-end">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td class="fw-bold text-muted">Symbol</td>
+              <td class="text-end">
+                {{details.symbol}}
+              </td>
+            </tr>
+            <tr>
+              <td class="fw-bold text-muted">Rank</td>
+              <td class="text-end">
+                {{details.rank}}
+              </td>
+            </tr>
+            <tr>
+              <td class="fw-bold text-muted">Price</td>
+              <td class="text-end">
+                {{details.quotes.USD.price | numberFormat: '$'}}
+              </td>
+            </tr>
+            <tr>
+              <td class="fw-bold text-muted">Market Cap</td>
+              <td class="text-end">
+                {{details.quotes.USD.market_cap | numberFormat: '$'}}
+              </td>
+            </tr>
+            <tr>
+              <td class="fw-bold text-muted">Volume (24hours)</td>
+              <td class="text-end">
+                {{details.quotes.USD.volume_24h | numberFormat}}
+              </td>
+            </tr>
+            <tr>
+              <td class="fw-bold text-muted">Circulation Supply</td>
+              <td class="text-end">
+                {{details.circulating_supply | numberFormat}}
+              </td>
+            </tr>
+            <tr>
+              <td class="fw-bold text-muted">Total Supply</td>
+              <td class="text-end">
+                {{details.total_supply | numberFormat}}
+              </td>
+            </tr>
+            <tr>
+              <td class="fw-bold text-muted">Max Supply</td>
+              <td class="text-end">
+                {{details.max_supply | numberFormat}}
+              </td>
+            </tr>
+            <tr>
+              <td class="fw-bold text-muted">Beta value</td>
+              <td class="text-end">
+                {{details.beta_value | numberFormat}}
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

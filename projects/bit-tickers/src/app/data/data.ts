@@ -1,6 +1,15 @@
+import {Page} from "../../../../bit-datatable/src/lib/bit-datatable.interface";
+
 export interface GridResponse<T> {
   items: T[];
   totalCount: number;
+}
+
+export interface InitStore<T> {
+  loading: boolean;
+  items: T[];
+  pagination: Page;
+  error?: unknown;
 }
 
 export interface TickerDTO {

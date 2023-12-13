@@ -18,9 +18,7 @@ const initialValue = {
 export class TickerSignalsFacade {
 
   private readonly httpClient = inject(HttpClient);
-
-  private state = signal(initialValue)
-
+  private state = signal(initialValue);
   readonly loading = computed(() => this.state().loading);
   readonly items = computed(() => this.state().items);
   readonly pagination = computed(() => this.state().pagination);
